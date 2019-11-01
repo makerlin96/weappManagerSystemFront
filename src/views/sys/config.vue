@@ -89,12 +89,30 @@
             </el-form-item>
           </el-form>
         </el-tab-pane>
+        <el-tab-pane label="开放平台配置" name="open">
+          <el-form ref="pushForm" :model="openForm" label-width="200px" style="width:40%;">
+            <el-form-item label="clientId：" prop="key">
+              <el-input v-model="openForm.clientId" placeholder="请输入拼多多开放平台clientId" />
+            </el-form-item>
+            <el-form-item label="clientSecret：" prop="secret">
+              <el-input v-model="openForm.clientSecret" placeholder="请输入拼多多开放平台clientSecret" />
+            </el-form-item>
+            <el-form-item label="accessToken：" prop="secret">
+              <el-input v-model="openForm.accessToken" placeholder="请输入拼多多开放平台accessToken" />
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" icon="el-icon-edit" @click="jinbaoConfigSubmit()">保 存</el-button>
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
       </el-tabs>
     </div>
   </div>
 </template>
 
 <script>
+import { getSysConfigInfo } from '@/api/sysConfig'
+
 export default {
   name: 'Tab',
   components: {
@@ -127,6 +145,11 @@ export default {
         key: '',
         secret: '',
         status: 0
+      },
+      openForm: {
+        clientId: '',
+        clientSecret: '',
+        accessToken: ''
       }
     }
   },
@@ -135,7 +158,17 @@ export default {
   },
   methods: {
     initData() {
-
+      getSysConfigInfo().then(res => {
+        console.log(res.data)
+        this.sysForm = res.data.sysConfig
+        this.pushForm = res.data.pushConfig
+        this.uploadForm = res.data.uploadConfig
+        this.openForm = res.data.jinbaoConfig
+        // this.
+      })
+    },
+    jinbaoConfigSubmit() {
+      alert(1)
     }
   }
 }

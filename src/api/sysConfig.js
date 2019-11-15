@@ -5,3 +5,10 @@ export function getSysConfigInfo() {
     method: 'get'
   })
 }
+export function jinbaoConfigSubmit(data) {
+  return request({
+    url: '/sys/config/jinbao',
+    method: 'post',
+    data
+  })
+}

@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import { getSysConfigInfo } from '@/api/sysConfig'
+import { getSysConfigInfo, jinbaoConfigSubmit } from '@/api/sysConfig'
 
 export default {
   name: 'Tab',
@@ -159,7 +159,7 @@ export default {
   methods: {
     initData() {
       getSysConfigInfo().then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.sysForm = res.data.sysConfig
         this.pushForm = res.data.pushConfig
         this.uploadForm = res.data.uploadConfig
@@ -168,7 +168,18 @@ export default {
       })
     },
     jinbaoConfigSubmit() {
-      alert(1)
+      jinbaoConfigSubmit(this.openForm).then(res => {
+        if (res.code === 200) {
+          this.$message.success(res.msg)
+        } else {
+          this.$message.error(res.msg)
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    dataFormSubmit() {
+      this.$message.error('不可配置')
     }
   }
 }

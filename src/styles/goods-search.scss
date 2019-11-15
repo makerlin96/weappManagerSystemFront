@@ -1,0 +1,30 @@
+.goodsImg{
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+  float: left;
+}
+.goodsInfo{
+  height: 100%;
+  width: 100%;
+  background: red;
+}
+.coupon-info {
+  height:auto;
+  align-items:center
+}
+.coupon-info span {
+  font-size:12px
+}
+.coupon-info span i {
+  background-color:#e3544c;
+  color:#fff;
+  padding:0 3px
+}
+
+.coupon-info span:first-child {
+  border:1px solid #e3544c;
+  color:#e3544c;
+  font-weight:700;
+  padding-right:2px
+}

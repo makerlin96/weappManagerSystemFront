@@ -13,3 +13,11 @@ export function getCats() {
     method: 'post'
   })
 }
+
+export function getGoodForId(itemId) {
+  return request({
+    url: '/goods/getGoodForId',
+    method: 'get',
+    params: itemId
+  })
+}
